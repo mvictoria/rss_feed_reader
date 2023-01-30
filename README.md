@@ -1,2 +1,2 @@
-# rss_feed_reader
+# RSS Feed Reader
 RSS feed reader in terminal for Code Mentor
