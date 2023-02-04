@@ -5,11 +5,11 @@ RSS feed reader in terminal for Code Mentor.  RSS Feed Reader will take a url an
 clone repo and run `make install`
 
 # Usage
-`poetry run python ./rss_feed_reader/feed_reader.py [RSS URL]`
+`poetry run python -m rss_feed_reader [RSS URL]`
 
 example:
 
-`poetry run python .\rss_feed_reader\feed_reader.py https://talkpython.fm/episodes/rss`
+`poetry run python -m rss_feed_reader https://talkpython.fm/episodes/rss`
 
 # Links
 [Code Mentor Project](https://www.codementor.io/projects/tool/rss-feed-reader-in-terminal-atx32jp82q)
