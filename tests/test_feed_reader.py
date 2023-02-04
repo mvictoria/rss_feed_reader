@@ -2,6 +2,8 @@ import http.server
 import threading
 from pathlib import Path
 
+import feedparser
+
 from rss_feed_reader import feed_reader
 
 
@@ -25,3 +27,17 @@ def test_valid_feed():
     assert test_feed.title == "title test"
     assert test_feed.description == "description test"
     assert test_feed.link == "https://www.urltest.com"
+
+
+def test_attribute_when_it_exists():
+    test_rss = feedparser.FeedParserDict(
+        {"link": "mylink", "description": "mydesc", "title": "mytitle"}
+    )
+    assert feed_reader.attribute(test_rss, "description") == "mydesc"
+
+
+def test_attribute_when_it_doesnt_exists():
+    test_rss = feedparser.FeedParserDict(
+        {"link": "mylink", "description": "mydesc", "title": "mytitle"}
+    )
+    assert feed_reader.attribute(test_rss, "doesnt_exist") == "no doesnt_exist element"
