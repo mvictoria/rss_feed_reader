@@ -5,11 +5,11 @@ RSS feed reader in terminal for Code Mentor.  RSS Feed Reader will take a url an
 Install with pip
 
 # Usage
-`rss_feed_reader [RSS URL]`
+`rss_feed_reader [RSS URL LIST]`
 
 example:
 
-`rss_feed_reader https://talkpython.fm/episodes/rss`
+`rss_feed_reader https://talkpython.fm/episodes/rss https://realpython.com/podcasts/rpp/feed`
 
 # Links
 [Code Mentor Project](https://www.codementor.io/projects/tool/rss-feed-reader-in-terminal-atx32jp82q)
