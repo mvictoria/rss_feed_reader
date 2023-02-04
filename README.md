@@ -4,6 +4,8 @@ RSS feed reader in terminal for Code Mentor.  RSS Feed Reader will take a url an
 # Installation
 Install with pip
 
+`python -m pip install git+https://github.com/mvictoria/rss_feed_reader
+
 # Usage
 `rss_feed_reader [RSS URL LIST]`
 
