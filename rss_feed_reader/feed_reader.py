@@ -12,13 +12,15 @@ def attribute(feed, attribute) -> str:
 
 
 @click.command()
-@click.argument("url")
-def main(url):
-    feed = read(url)
+@click.argument("urls", nargs=-1)
+def main(urls):
 
-    click.echo(f"Title: {attribute(feed, 'title')}")
-    click.echo(f"Description: {attribute(feed, 'description')}")
-    click.echo(f"Link: {attribute(feed, 'link')}")
+    for url in urls:
+        feed = read(url)
+
+        click.echo(f"Title: {attribute(feed, 'title')}")
+        click.echo(f"Description: {attribute(feed, 'description')}")
+        click.echo(f"Link: {attribute(feed, 'link')}")
 
 
 if __name__ == "__main__":
