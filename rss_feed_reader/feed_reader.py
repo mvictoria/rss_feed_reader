@@ -7,16 +7,8 @@ def read(url: str):
     return feed.feed
 
 
-def title(feed) -> str:
-    return feed.get("title", "no title element")
-
-
-def description(feed) -> str:
-    return feed.get("description", "no description element")
-
-
-def link(feed) -> str:
-    return feed.get("link", "no link element")
+def attribute(feed, attribute) -> str:
+    return feed.get(attribute, f"no {attribute} element")
 
 
 @click.command()
@@ -24,9 +16,9 @@ def link(feed) -> str:
 def main(url):
     feed = read(url)
 
-    click.echo(f"Title: {title(feed)}")
-    click.echo(f"Description: {description(feed)}")
-    click.echo(f"Link: {link(feed)}")
+    click.echo(f"Title: {attribute(feed, 'title')}")
+    click.echo(f"Description: {attribute(feed, 'description')}")
+    click.echo(f"Link: {attribute(feed, 'link')}")
 
 
 if __name__ == "__main__":
