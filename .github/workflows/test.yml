@@ -17,7 +17,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
-    - name: format with black
+        pip install poetry
+        poetry install
+    - name: run pytest
       run: |
-        pytest tests
+        poetry run pytest ./tests
