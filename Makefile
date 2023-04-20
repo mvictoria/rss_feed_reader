@@ -1,7 +1,11 @@
+POETRY := $(shell poetry --version 2> /dev/null)
+
 .PHONY: install
 install:
+ifndef POETRY
 	python -m pip install --upgrade pip
 	pip install poetry
+endif
 	poetry install
 
 .PHONY: lint
