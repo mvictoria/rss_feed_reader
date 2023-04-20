@@ -20,4 +20,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./rss_feed_reader /code/rss_feed_reader
 
+EXPOSE 80
+
 CMD ["uvicorn", "rss_feed_reader.main:app", "--host=0.0.0.0", "--port=80"]

@@ -19,7 +19,9 @@ Build docker image
 `sudo docker build --tag rss-feed-reader .`
 `sudo docker container run --publish 80:80 --name rss-container rss-feed-reader`
 
-Conect to [localhost](localhost/docs#/)
+Connect to [http://localhost/docs](http://localhost/docs)
+
+Ex: [http://localhost/read/https://talkpython.fm/episodes/rss](http://localhost/read/https://talkpython.fm/episodes/rss)
 
 Shut it down with
 
