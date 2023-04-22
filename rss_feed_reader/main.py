@@ -1,6 +1,7 @@
-import feedparser
 from fastapi import FastAPI, Form, Request
 from starlette.templating import Jinja2Templates
+
+from rss_feed_reader import feed_reader
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -12,34 +13,19 @@ def root():
 
 
 @app.get("/read/{url:path}")
-def read_rss_feed(url: str):
-    feed = feedparser.parse(url).feed
-
-    return {
-        "Title": feed.get("title", "No title"),
-        "Description": feed.get("description", "No description"),
-        "Link": feed.get("link", "No link"),
-    }
+async def read_rss_feed(url: str):
+    return feed_reader.read_just_the_stuff_we_want(url)
 
 
 @app.get("/reader")
-def form_get(request: Request):
+async def form_get(request: Request):
     result = "Enter an RSS Feed "
-    return templates.TemplateResponse(
+    return templates.TemplateResponse(  
         "form.html", context={"request": request, "result": result}
     )
 
 
 @app.post("/reader")
-def form_post(request: Request, num: str = Form(...)):
-    feed = feedparser.parse(num).feed
-
-    return templates.TemplateResponse(
-        "form.html",
-        context={
-            "request": request,
-            "title": feed.get("title", "No title"),
-            "link": feed.get("link", "No link"),
-            "description": feed.get("description", "No description"),
-        },
-    )
+async def form_post(request: Request, url: str = Form(...)):
+    feed = feed_reader.read_just_the_stuff_we_want(url)
+    return templates.TemplateResponse("form.html", context={"request": request, **feed})
